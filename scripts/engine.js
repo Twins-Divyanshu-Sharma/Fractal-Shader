@@ -3,6 +3,7 @@ import Mesh from './mesh.js'
 import ShaderProgram from './shaderProgram.js'
 import Object from './object.js'
 import { objectFragmentShader, objectVertexShader } from '../shaderfiles/objectShader.js';
+import { gridFragmentShader, gridVertexShader } from '../shaderfiles/gridShader.js';
 import Texture from './texture.js';
 
 export default class engine{
@@ -22,7 +23,8 @@ export default class engine{
         this.gl = gl;
         this.ticks = 1000/60;
         this.shader = new ShaderProgram(this.gl, objectVertexShader,objectFragmentShader);
-        this.renderer = new Renderer(this.gl,this.shader);
+        this.gridShader = new ShaderProgram(this.gl, gridVertexShader, gridFragmentShader);
+        this.renderer = new Renderer(this.gl,this.gridShader);
         let squaremesh = new Mesh(this.gl);
         let squaretex = new Texture(this.gl,"brick");
         this.square = new Object(squaremesh, squaretex);
@@ -48,7 +50,7 @@ export default class engine{
     }
 
     update(){
-        this.square.rotate(2,1,0.5);
+ //       this.square.rotate(0.05,0.05,0.05);
     }
 
     render(){

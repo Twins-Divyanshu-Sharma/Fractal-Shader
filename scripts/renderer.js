@@ -16,6 +16,7 @@ export default class Renderer{
       this.shader.mapUniform(gl,"albedo");
       this.shader.mapUniform(gl,"lightPos");
       this.shader.mapUniform(gl,"lightColor");
+      this.shader.mapUniform(gl,"uTime");
       
       let fov = 60.0 * Math.PI/180;
         let aspect = gl.canvas.width/gl.canvas.height;
@@ -32,6 +33,7 @@ export default class Renderer{
       this.shader.setUniform3f(gl,"lightPos", lightPos);
       this.shader.setUniform3f(gl,"lightColor", lightColor);
       this.shader.setUniform1i(gl,"albedo",0);
+      this.shader.setUniform1f(gl,"uTime", performance.now()/2000);
 
       ///////////////////////////////////////////////////////////       
       this.shader.setUniformMat4(gl, "transform", object.transform);

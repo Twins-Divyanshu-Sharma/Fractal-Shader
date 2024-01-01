@@ -23,7 +23,7 @@ export default class Object{
     }
 
     updateTransform(){
-
+ 
         let toRadians = Math.PI/180;
         mat4.identity(this.transform);
         mat4.rotateZ(this.transform,this.transform,(this.rot[2]*toRadians));
@@ -32,6 +32,7 @@ export default class Object{
 
         for(let i=0; i<3; i++)
             this.transform[12+i] = this.pos[i];
+
     
     }
 
